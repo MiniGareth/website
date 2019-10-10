@@ -19,7 +19,7 @@ Vehicle.prototype.behaviors = function() {
   var flee = this.flee(mouse);
 
   arrive.mult(1);
-  flee.mult(5);
+  flee.mult(10);
 
   this.applyForce(arrive);
   this.applyForce(flee);
@@ -46,8 +46,8 @@ Vehicle.prototype.arrive = function(target) {
   var desired = p5.Vector.sub(target, this.pos);
   var d = desired.mag();
   var speed = this.maxspeed;
-  if (d < 100) {
-    speed = map(d, 0, 100, 0, this.maxspeed);
+  if (d < windowWidth) {
+    speed = map(d, 0, windowWidth, 0, this.maxspeed);
   }
   desired.setMag(speed);
   var steer = p5.Vector.sub(desired, this.vel);
